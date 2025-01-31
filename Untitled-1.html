@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>San Valentín</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: pink;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        h1 {
+            color: red;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        button {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        #yes {
+            background-color: lightgreen;
+        }
+        #no {
+            background-color: lightcoral;
+            position: absolute;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="question">
+        <h1>¿Quieres ser mi San Valentín?</h1>
+        <div class="buttons">
+            <button id="yes" onclick="showLove()">Sí</button>
+            <button id="no" onmouseover="moveNo()">No</button>
+        </div>
+    </div>
+    
+    <div id="response" class="hidden">
+        <h1>¡Sabía que dirías que sí! 💖</h1>
+        <p>¡Te quiero mucho! 💕</p>
+    </div>
+    
+    <script>
+        function moveNo() {
+            let x = Math.random() * (window.innerWidth - 100);
+            let y = Math.random() * (window.innerHeight - 50);
+            document.getElementById('no').style.left = `${x}px`;
+            document.getElementById('no').style.top = `${y}px`;
+        }
+        
+        function showLove() {
+            document.getElementById('question').classList.add('hidden');
+            document.getElementById('response').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
