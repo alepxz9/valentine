@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>San Valentín</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
     <style>
         body {
             display: flex;
@@ -12,17 +16,18 @@
             align-items: center;
             height: 100vh;
             background-color: pink;
-            font-family: Arial, sans-serif;
+            font-family: 'Great Vibes', cursive;
             text-align: center;
         }
         h1 {
-            color: red;
+            color: rgb(126, 0, 0);
         }
         .buttons {
             margin-top: 20px;
         }
         button {
-            font-size: 20px;
+            font-size: 25px;
+            font-family: 'Great Vibes';
             padding: 10px 20px;
             margin: 10px;
             border: none;
@@ -39,11 +44,54 @@
         .hidden {
             display: none;
         }
+        #response {
+            font-family: Georgia, serif;
+        }
+    
+        .letter p {
+            margin-bottom: 15px;
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        /* Estilos para el pergamino */
+        .scroll {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            width: 80%;
+            max-width: 600px;
+            border: 2px solid #000;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            font-size: 18px;
+            line-height: 1.6;
+            font-family: 'Georgia', serif;
+            opacity: 0;
+            animation: scrollOpen 1s forwards;
+        }
+
+        /* Animación para abrir el pergamino */
+        @keyframes scrollOpen {
+            from {
+                transform: translate(-50%, -50%) scale(0);
+                opacity: 0;
+            }
+            to {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+        }
     </style>
 </head>
-<body>
+<body>    
+
     <div id="question">
-        <h1>¿Quieres ser mi San Valentín?</h1>
+        <h1>¿Leoncito, quieres ser mi San Valentín?</h1>
         <div class="buttons">
             <button id="yes" onclick="showLove()">Sí</button>
             <button id="no" onmouseover="moveNo()">No</button>
@@ -51,10 +99,33 @@
     </div>
     
     <div id="response" class="hidden">
-        <h1>¡Sabía que dirías que sí! 💖</h1>
-        <p>¡Te quiero mucho! 💕</p>
-    </div>
+        <div class="envlope-wrapper">
+            <div id="envelope" class="close">
+                <div class="front flap"></div>
+                <div class="front pocket"></div>
+                <div class="letter">
+                </div>
+                <div class="hearts">
+                    <div class="heart a1"></div>
+                    <div class="heart a2"></div>
+                    <div class="heart a3"></div>
+                </div>
+            </div>
+        </div>
+        <div id="scroll" class="scroll">
+            <p>¡Sabía que dirías que sí! 💖</p>
+            <p>Desde el día en que llegaste a mi vida, cada momento se ha vuelto más especial, más dulce y más lleno de amor. No hay distancia que pueda disminuir lo que siento por ti, porque mi corazón siempre late por y para ti. Eres mi persona favorita, mi alegría diaria y el dueño de cada pensamiento bonito en mi mente.</p>
+            <p>Te amo más de lo que las palabras pueden expresar. 💕🦁🐻‍❄️💕</p>
+        </div>
     
+        </div>
+        
+           
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+    <script  src="./script.js"></script>
+
+    </div>
+
     <script>
         function moveNo() {
             let x = Math.random() * (window.innerWidth - 100);
@@ -67,6 +138,25 @@
             document.getElementById('question').classList.add('hidden');
             document.getElementById('response').classList.remove('hidden');
         }
+
+
+             document.getElementById("envelope").addEventListener("click", function() {
+            setTimeout(function() {
+            document.getElementById("scroll").style.display = "block";
+        }, 6000); // 7 segundos de espera
+        setTimeout(() => {
+                document.getElementById('envelope').style.display = 'none';
+            }, 6000); // Oculta el sobre 7 segundos después de abrirlo
+
+                envelope.classList.add('close');
+                envelope.style.transform = 'translateY(0)'; // Regresar al centro
+                hearts.style.display = 'none'; // Ocultar los corazones
+                scroll.style.display = 'none'; // Ocultar el pergamino
+            }
+        
+        
+         );
+</script>
     </script>
 </body>
 </html>
