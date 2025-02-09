@@ -4,77 +4,113 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>San Valentín</title>
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/all.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
     <style>
         body {
+            
+            padding: 0;
+            margin: 0;
+            background-color: rosybrown;
+            font-family: -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif; /* Fuente tipo iPhone */
+        }
+        #content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            background-color: white;
+            width: 20rem;
+            height: 20rem;
+            padding: 1rem;
+            border-radius: .4rem;
+            text-align: center;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        #content div {
             display: flex;
             flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            
+        }
+        div button {
+            margin-top: 1rem;
+            padding: 0.7rem 1.5rem;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 1.5rem;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+            transition: .5s all;
+            width: max-content;
+        }
+        div button:first-of-type:hover {
+            transform: scale(0.9);
+            background-color: rgb(183, 6, 98);
+        }
+        div button:first-of-type {
+            background-color: rgb(145, 4, 77);
+            color: white;
+        }
+        div button:last-of-type:hover {
+            transform: scale(0.9);
+            background-color: grey;
+        }
+        div button:last-of-type {
+            background-color: #c8c8c8;
+            color: black;
+        }
+        div span {
+            color: rgb(145, 4, 77);
+            font-weight: 600;
+        }
+        #accept {
+            display: none;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            background-color: pink;
-            font-family: 'Great Vibes', cursive;
-            text-align: center;
+    
+
         }
-        h1 {
-            color: rgb(126, 0, 0);
-        }
-        .buttons {
-            margin-top: 20px;
-        }
-        button {
-            font-size: 25px;
-            font-family: 'Great Vibes';
-            padding: 10px 20px;
-            margin: 10px;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        #yes {
-            background-color: lightgreen;
-        }
-        #no {
-            background-color: lightcoral;
-            position: absolute;
-        }
-        .hidden {
-            display: none;
-        }
-        #response {
-            font-family: Georgia, serif;
-        }
+
+
+
     
         .letter p {
             margin-bottom: 15px;
             font-size: 18px;
             line-height: 1.5;
+            
         }
 
         /* Estilos para el pergamino */
         .scroll {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #fff;
-            padding: 20px;
-            width: 80%;
-            max-width: 600px;
-            border: 2px solid #000;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            font-size: 18px;
-            line-height: 1.6;
-            font-family: 'Georgia', serif;
-            opacity: 0;
-            animation: scrollOpen 1s forwards;
-        }
-
+         display: none;
+         position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        padding: 30px; /* Más espacio alrededor del texto */
+        width: fit-content;
+        max-width: 900px; /* Un tamaño más controlado */
+        border: 2.5px solid black; /* Borde más grueso */
+        border-radius: 10px; /* Bordes más redondeados */
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
+        font-size: 20px;
+        line-height: 1.8;
+        font-family: 'Georgia', serif;
+        text-align: center; /* Asegura que el texto esté bien centrado */
+        opacity: 0;
+        animation: scrollOpen 1s forwards;
+}
         /* Animación para abrir el pergamino */
         @keyframes scrollOpen {
             from {
@@ -86,19 +122,23 @@
                 opacity: 1;
             }
         }
+
+        
     </style>
 </head>
-<body>    
-
-    <div id="question">
-        <h1>¿Leoncito, quieres ser mi San Valentín?</h1>
-        <div class="buttons">
-            <button id="yes" onclick="showLove()">Sí</button>
-            <button id="no" onmouseover="moveNo()">No</button>
+<body>
+    <div id="content">
+        <span><i class="fa-duotone fa-solid fa-stars fa-beat-fade"></i></span>
+        <div>
+            <span style="font-size: 3.5rem;"><i class="fa-regular fa-heart fa-beat"></i></span>
+            <span style="font-size: 1.5rem;">¿Leoncito, quieres ser mi San Valentín?</span>
+            <button>¡Sí!💖</button>
+            <button>No</button>
         </div>
+        <span><i class="fa-duotone fa-solid fa-stars fa-beat-fade"></i></span>
     </div>
-    
-    <div id="response" class="hidden">
+
+    <div id="accept" class="hidden">
         <div class="envlope-wrapper">
             <div id="envelope" class="close">
                 <div class="front flap"></div>
@@ -114,8 +154,8 @@
         </div>
         <div id="scroll" class="scroll">
             <p>¡Sabía que dirías que sí! 💖</p>
-            <p>Desde el día en que llegaste a mi vida, cada momento se ha vuelto más especial, más dulce y más lleno de amor. No hay distancia que pueda disminuir lo que siento por ti, porque mi corazón siempre late por y para ti. Eres mi persona favorita, mi alegría diaria y el dueño de cada pensamiento bonito en mi mente.</p>
-            <p>Te amo más de lo que las palabras pueden expresar. 💕🦁🐻‍❄️💕</p>
+            <p>Desde que llegaste a mi vida, todo es más bonito, más tranquilo y lleno de amor. Incluso a distancia quiero que seas protagonista y no espectador. Mi corazón y mi mente te pertenecen. Eres mi persona favorita, mi lugar seguro, el sol que ilumina mis días y el dueño de mis pensamientos más bonitos.</p>
+            <p>Te amo mi niño,  le pido a la vida y al universo que podamos compartir mucho tiempo juntos. 💕🦁🐻‍❄️💕</p>
         </div>
     
         </div>
@@ -123,17 +163,67 @@
            
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
     <script  src="./script.js"></script>
-
     </div>
+    </style>
+
 
     <script>
-        function moveNo() {
-            let x = Math.random() * (window.innerWidth - 100);
-            let y = Math.random() * (window.innerHeight - 50);
+        document.addEventListener("DOMContentLoaded", function () {
+            const noButton = document.querySelector("button:last-of-type");
+            const yesButton = document.querySelector("button:first-of-type");
+            const content = document.getElementById("content");
+            const acceptDiv = document.getElementById("accept");
+
+            let yesButtonSize = 1.2;
+
+            const noResponses = [
+                "¿Estás seguro 😅?",
+                "Piénsalo otra vez",
+                "¿Última oportunidad?",
+                "¿Me romperás el corazón 💔?",
+                "🥺",
+                "Por favor 🙏🏻",
+                ""
+            ];
+
+            let currentResponseIndex = 0;
+
+            noButton.addEventListener("click", function () {
+                const currentResponse = noResponses[currentResponseIndex];
+                noButton.textContent = currentResponse;
+
+                const contentRect = content.getBoundingClientRect();
+                const maxX = contentRect.width - noButton.offsetWidth;
+                const maxY = contentRect.height - noButton.offsetHeight;
+
+                const randomX = Math.random() * maxX;
+                const randomY = Math.random() * maxY;
+
+                noButton.style.position = "absolute";
+                noButton.style.left = `${randomX}px`;
+                noButton.style.top = `${randomY}px`;
+
+                yesButtonSize += 0.2;
+                yesButton.style.fontSize = `${yesButtonSize}rem`;
+                yesButton.style.padding = `${yesButtonSize * 0.6}rem ${yesButtonSize * 0.9}rem`;
+
+                currentResponseIndex++;
+
+                if (currentResponseIndex === noResponses.length) {
+                    setTimeout(() => {
+                        noButton.style.display = "none";
+                    }, 0);
+                }
+            });
+
+            // Mostrar el div "accept" cuando se presione el botón "¡Sí!💖"
+            yesButton.addEventListener("click", function () {
+                acceptDiv.style.display = "flex";  // Muestra el div
+                content.style.display = "none";  // Muestra el div
             document.getElementById('no').style.left = `${x}px`;
             document.getElementById('no').style.top = `${y}px`;
         }
-        
+    )
         function showLove() {
             document.getElementById('question').classList.add('hidden');
             document.getElementById('response').classList.remove('hidden');
@@ -155,8 +245,10 @@
             }
         
         
-         );
-</script>
+         );              
+
+            });
+        ;
     </script>
 </body>
 </html>
